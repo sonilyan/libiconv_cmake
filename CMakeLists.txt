@@ -79,6 +79,9 @@ CHECK_INCLUDE_FILES(alloca.h HAVE_ALLOCA_H)
 # Define to 1 if you have the `canonicalize_file_name' function.
 CHECK_FUNCTION_EXISTS(canonicalize_file_name HAVE_CANONICALIZE_FILE_NAME)
 
+/* Define if you have <langinfo.h> and nl_langinfo(CODESET). */
+CHECK_FUNCTION_EXISTSnl_langinfo HAVE_LANGINFO_CODESET)
+
 # Define to 1 if you have the MacOS X function CFLocaleCopyCurrent in the
 # CoreFoundation framework. 
 CHECK_FUNCTION_EXISTS(CFLocaleCopyCurrent HAVE_CFLOCALECOPYCURRENT)

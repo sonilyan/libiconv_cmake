@@ -182,7 +182,7 @@ SET(HAVE_ICONV ON)
 CHECK_INCLUDE_FILES(inttypes.h HAVE_INTTYPES_H)
 
 # Define if you have <langinfo.h> and nl_langinfo(CODESET). 
-CHECK_INCLUDE_FILES(langinfo.h HAVE_LANGINFO_CODESET)
+# CHECK_INCLUDE_FILES(langinfo.h HAVE_LANGINFO_CODESET)
 
 # Define to 1 if the system has the type `long long int'. 
 CHECK_TYPE_SIZE("long long int" HAVE_LONG_LONG_INT)

@@ -379,15 +379,10 @@ if (NOT DEFINED CMAKE_DEBUG_POSTFIX)
   set(CMAKE_DEBUG_POSTFIX "_Debug")
 endif()
 
-if (USE_SHARED_LIB)
-   add_library(iconv lib/iconv.c libcharset/lib/localcharset.c)
-   set_target_properties(iconv PROPERTIES VERSION ${LIBICONV_VERSION} SOVERSION ${LIBICONV_SOVERSION} DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
-else()
-   add_library(iconv-static STATIC lib/iconv.c libcharset/lib/localcharset.c)
-   set_target_properties(iconv-static PROPERTIES INTERFACE_COMPILE_DEFINITIONS "LIBICONV_STATIC" DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
-endif()
+add_library(iconv-static STATIC lib/iconv.c libcharset/lib/localcharset.c)
+set_target_properties(iconv-static PROPERTIES INTERFACE_COMPILE_DEFINITIONS "LIBICONV_STATIC" DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
 
-target_include_directories(iconv
+target_include_directories(iconv-static
     PUBLIC
         $<INSTALL_INTERFACE:include>
     )

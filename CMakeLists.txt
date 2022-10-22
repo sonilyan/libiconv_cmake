@@ -380,30 +380,16 @@ if (NOT DEFINED CMAKE_DEBUG_POSTFIX)
 endif()
 
 if (USE_SHARED_LIB)
-   add_library(local_iconv lib/iconv.c libcharset/lib/localcharset.c)
-   set_target_properties(local_iconv PROPERTIES VERSION ${LIBICONV_VERSION} SOVERSION ${LIBICONV_SOVERSION} DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
+   add_library(iconv lib/iconv.c libcharset/lib/localcharset.c)
+   set_target_properties(iconv PROPERTIES VERSION ${LIBICONV_VERSION} SOVERSION ${LIBICONV_SOVERSION} DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
 else()
-   add_library(local_iconv STATIC lib/iconv.c libcharset/lib/localcharset.c)
-   set_target_properties(local_iconv PROPERTIES INTERFACE_COMPILE_DEFINITIONS "LIBICONV_STATIC" DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
+   add_library(iconv-static STATIC lib/iconv.c libcharset/lib/localcharset.c)
+   set_target_properties(iconv-static PROPERTIES INTERFACE_COMPILE_DEFINITIONS "LIBICONV_STATIC" DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
 endif()
 
-target_include_directories(local_iconv
+target_include_directories(iconv
     PUBLIC
         $<INSTALL_INTERFACE:include>
-    )
-    
-# Install
-install(FILES 
-	${CMAKE_CURRENT_BINARY_DIR}/include/iconv.h
-	DESTINATION include
-	)
-
-install(TARGETS local_iconv
-    EXPORT Targets
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
-    INCLUDES DESTINATION include
     )
 
 

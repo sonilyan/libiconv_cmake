@@ -290,7 +290,7 @@ int iconv_close (iconv_t icd)
  * 'struct wchar_conv_struct' additionally has an 'mbstate_t' field.
  */
 typedef int verify_size_1[2 * (sizeof (struct conv_struct) <= sizeof (iconv_allocation_t)) - 1];
-typedef int verify_size_2[2 * (sizeof (struct wchar_conv_struct) <= sizeof (iconv_allocation_t)) - 1];
+//typedef int verify_size_2[2 * (sizeof (struct wchar_conv_struct) <= sizeof (iconv_allocation_t)) - 1];
 
 int iconv_open_into (const char* tocode, const char* fromcode,
                      iconv_allocation_t* resultp)
